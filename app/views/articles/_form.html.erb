@@ -1,24 +1,36 @@
 <%= form_with model: article do |form| %>
-    <div>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"><%= form.label :title %></label>
+      <input type="title" class="form-control" placeholder="Title" <%= form.text_area :title =%>
       <% article.errors.full_messages_for(:title).each do |message| %>
         <div><%= message %></div>
       <% end %>
     </div>
-
-    <div>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %><br>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label" <%= form.label :body %></label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="What would you like to share..." <%= form.text_area :body =%></textarea>
       <% article.errors.full_messages_for(:body).each do |message| %>
         <div><%= message %></div>
       <% end %>
     </div>
 
-    <div>
-        <%= form.label :status %><br>
-        <%= form.select :status, ['public', 'private', 'archived'], 
-    selected: 'public' %>
+    <style>
+    .mb-3 {
+      padding: 15px;
+    }
+    </style>
+
+    <div class="mb-3">
+    <%= form.label :status %><br>
+      <select class="form-select" aria-label="Default select example" <%= form.label :status %>>
+        <option selected>Select Privacy</option>
+        <option value="1">Public</option>
+        <option value="2">Private</option>
+        <option value="3">Public</option>
+      </select>
+      <%= form.select :status, ['public', 'private', 'archived'], 
+      selected: 'public' %>
     </div>
 
     <div>

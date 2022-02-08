@@ -1,17 +1,35 @@
+<html>
+<head>
+</head>
+
+<body>
 <h1><%= @article.title %></h1>
 
 <p><%= @article.body %></p>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+<div class="contain">
+  <ul>
+    <a class="btn btn-primary" <%= link_to "Edit", edit_article_path(@article) %></a>
+    <a class="btn btn-primary" <%= link_to "Delete", article_path(@article), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %> </a> 
+  </ul>
+</div>
 
 <h2>Comments</h2>
 <%= render @article.comments %>
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
+
+<style>
+.contain {
+  text-align: center;
+  margin-left: auto ;
+  margin-right: auto ;
+  width: 50% ;
+}
+
+</body>
+</html>
