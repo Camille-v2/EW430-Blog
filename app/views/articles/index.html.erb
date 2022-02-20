@@ -6,7 +6,9 @@
 <body>
 <div class="count">
   <h1>Articles</h1>
-  Our blog has <%= Article.public_count %> articles and counting!
+    <div class="alert alert-info" role="alert">
+      Our blog has <%= Article.public_count %> articles and counting!
+    </div>
 </div>
 <style>
 .count {
@@ -20,7 +22,6 @@
       <% @articles.each do |article| %>
         <% unless article.archived? %>
           <div class="card">
-            <h5 class="card-header"><%= "Author Name" %></h5>
             <div class="card-body">
               <h5 class="card-title"><%= article.title %></h5>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim.</p>
@@ -31,9 +32,7 @@
       <% end %>
     </div>
   </div><br>
-<div class="contain">
-  <a class="btn btn-primary" <%= link_to "New Article", new_article_path %></a>
-</div><br>
+
 <style>
 .contain {
   text-align: center;
@@ -42,6 +41,5 @@
   width: 50% ;
 }
 </style>
-<style>
   </body>
 </html>
